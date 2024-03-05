@@ -31,7 +31,7 @@ class BoardView(context: Context, attributeSet: AttributeSet) : View(context, at
 
     private val thinLinePaint = Paint().apply {
         style = Paint.Style.STROKE
-        color = Color.parseColor("#454545")
+        color = Color.parseColor("#999999")
         strokeWidth = 4F
     }
 
