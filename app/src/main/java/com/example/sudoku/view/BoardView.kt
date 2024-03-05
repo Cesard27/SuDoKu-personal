@@ -21,7 +21,7 @@ class BoardView(context: Context, attributeSet: AttributeSet) : View(context, at
 
     private var listener: BoardView.OnTouchListener? = null
 
-    private lateinit var binding: ActivityMainBinding
+    //private lateinit var binding: ActivityMainBinding
 
     private val thickLinePaint = Paint().apply {
         style = Paint.Style.STROKE

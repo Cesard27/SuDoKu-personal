@@ -5,20 +5,23 @@ import androidx.activity.ComponentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.sudoku.R
+import com.example.sudoku.databinding.ActivityMainBinding
 import com.example.sudoku.viewmodel.PlaySudokuViewModel
 
 class MainActivity : ComponentActivity(), BoardView.OnTouchListener {
 
     private lateinit var viewModel: PlaySudokuViewModel
-
+    private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
+        setContentView(binding.root)
 
+        binding.BoardView.registerListener(this)
 
         viewModel = ViewModelProvider(this)[PlaySudokuViewModel::class.java]
         viewModel.sudokuModel.selectedCellLiveData.observe(this, Observer {
@@ -27,6 +30,8 @@ class MainActivity : ComponentActivity(), BoardView.OnTouchListener {
     }
 
     private fun updateSelectedCellUI(cell: Pair<Int, Int>?) = cell?.let {
+        binding.BoardView.updateSelectedCellUI(cell.first, cell.second)
+
         //boardView.updateSelectedCellUI(cell.first, cell.second)
     }
 
